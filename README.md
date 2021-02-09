@@ -1,5 +1,5 @@
 # jQuery
-## Feature #1: Display images  1 hour Start: 1:55pm
+## Feature #1: Display images  1 hour Start: 1:55pm End: 5pm
 Why are we implementing this feature?
 As a user, I want to view the images on the page so that I can browse the photo collection.
 What are we going to implement?
