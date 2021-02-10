@@ -22,9 +22,6 @@ Horn.prototype.render = function(){
   $template.removeClass('photo-template');
   $template.attr('class', this.name);
 
-
-
-
   $('main').append($template);
 };
 
@@ -37,7 +34,22 @@ $.ajax('data/page-1.json').then(callStuffBack => {
     console.log('json horners:',horner);
   });
   horns.forEach(horner => { horner.render();});
+
+  $('select').change( function () {
+    const choice = $('select').find(':selected').text();
+    console.log(choice);
+    $('section').hide();
+    $(`#${choice}`).show();
+  });
+  horns.forEach(horner => { horner.render();});
+
+
+
 });
+
+
+
+
 
 
 
