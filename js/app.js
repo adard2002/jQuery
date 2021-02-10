@@ -1,29 +1,32 @@
 'use strict';
-
-// constructor function
-function Horn (img, title, description, keyword, horns){
-  this.img_url = img;
+console.log('script is connected');
+function Horn (img,title,desc,keyword,horns) {
+  this.img = img;
   this.title = title;
-  this.description = description;
+  this.description = desc;
   this.keyword = keyword;
   this.horns = horns;
 }
 
-Horn.prototype.render = function(){
-  const $template = $('.photo-template').clone();
+Horn.prototype.render = function (){
+
+  const $template = $('#photo-template').clone();
+  $template.removeAttr('id');
+  $template.attr('id',this.keyword);
+  console.log($template.attr('id'));
+
   const $h2 = $template.find('h2');
   $h2.text(this.title);
   console.log('within render function, h2:',this.title);
   const $image = $template.find('img');
-  $image.attr('src', this.img_url);
+  $image.attr('src', this.img);
   $image.attr('alt', this.keyword);
   $template.find('p').text(this.description);
-
-  $template.removeClass('photo-template');
-  $template.attr('class', this.name);
-
+  console.log($template);
   $('main').append($template);
 };
+
+
 
 $.ajax('data/page-1.json').then(callStuffBack => {
   console.log(callStuffBack);
@@ -33,7 +36,7 @@ $.ajax('data/page-1.json').then(callStuffBack => {
     $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
     console.log('json horners:',horner);
   });
-  horns.forEach(horner => { horner.render();});
+
 
   $('select').change( function () {
     const choice = $('select').find(':selected').text();
@@ -42,13 +45,7 @@ $.ajax('data/page-1.json').then(callStuffBack => {
     $(`#${choice}`).show();
   });
   horns.forEach(horner => { horner.render();});
-
-
-
 });
-
-
-
 
 
 

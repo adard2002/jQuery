@@ -1,10 +1,9 @@
 
 h1 {
+  text-decoration: underline;
+  text-align: center;
   font-size: 25px;
 }
-
-
-
 
 .photoTemplate {
   height: 120px;
@@ -12,6 +11,11 @@ h1 {
 }
 
 img {
-  height: 120px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
+}
+
+div {
+  display:flex;
+  
 }
