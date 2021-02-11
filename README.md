@@ -1,5 +1,5 @@
 # jQuery
-## Feature #1: Display images  1 hour Start: 1:55pm End: 5pm
+## Feature #1: Display images  1 hour | 1:30pm End: 4:30pm
 Why are we implementing this feature?
 As a user, I want to view the images on the page so that I can browse the photo collection.
 What are we going to implement?
@@ -12,7 +12,7 @@ Use jQuery to make a copy of the HTML template of the photo component. For each 
 
 
 
-## Feature #2: Filter images 3 hours
+## Feature #2: Filter images 3 hours |  6:30 - 7:45
 Why are we implementing this feature?
 As a user, I want to be able to filter the images so that I can view only images that match a keyword.
 What are we going to implement?
@@ -24,7 +24,7 @@ Use an event handler to respond when the user chooses an option from the select 
 
 
 
-## Feature #3: Style the application 1 hour 
+## Feature #3: Style the application | 1 hour 8 - 8:30
 Why are we implementing this feature?
 As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images in a grid like pattern.
 What are we going to implement?
@@ -36,6 +36,45 @@ Utilize at least one Google font.
 Stretch Goal: Sort the images
 Why are we implementing this feature?
 As a user, I want to be able to sort the images so there is an order to how they render.
+What are we going to implement?
+Given that a user is presented with sort options When the user clicks on one option Then the images should be sorted accordingly
+
+How are we implementing it?
+Add the ability for the user to sort the images by either title or by number of horns.
+Sort the images by one of the properties on page load. This should also apply to the second page of images.
+
+
+# Lab 03
+
+## Feature 1: Pagination | 3 - 4:45
+Why are we implementing this feature?
+As a user, I want to have the ability to view additional images so that my view does not become cluttered.
+What are we going to implement?
+Given that a user opens the application in the browser When the user clicks on a button or link to another page Then the other set of images should be dynamically displayed
+
+How are we implementing it?
+Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
+Reset the filters, then repopulate them using only keywords from the images currently being displayed.
+## Feature 2: Templating  | 1:30 - 2:30
+Why are we implementing this feature?
+As a user, I want all of the images to be displayed in a consistent manner, so that it is easy to scan the collection of images.
+What are we going to implement?
+Given that a user opens the application in the browser When the images are displayed on the screen Then each image should be rendered according to a template
+
+How are we implementing it?
+Create the appropriate Mustache template in your HTML with the same <h2>, <img>, and <p> elements as the jQuery template from the prior lab.
+Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
+## Feature 3: Styling with Flexbox | 2:30 - 3
+Why are we implementing this feature?
+As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images.
+What are we going to implement?
+Given that a user opens the application in the browser When the user navigates to the home page Then the images should be displayed in columns, as screen width allows
+
+How are we implementing it?
+Refactor your CSS to use Flexbox instead of floats. You are welcome to use a combination of floats and Flexbox, as you see fit.
+## Feature 4: Sort the images | 6:30 - 8
+Why are we implementing this feature?
+As a user, I want to be able to sort the images so that there is an order to their rendering.
 What are we going to implement?
 Given that a user is presented with sort options When the user clicks on one option Then the images should be sorted accordingly
 
