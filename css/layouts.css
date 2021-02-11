@@ -1,17 +1,18 @@
 
 h1 {
+  text-decoration: underline;
+  text-align: center;
   font-size: 25px;
+  margin-bottom: 25px;
 }
 
-
-
-
-.photoTemplate {
-  height: 120px;
-  width: 300px;
+section {
+  display:flex;
+  flex-flow:wrap;
+  justify-content: start;
+}
+div {
+  width:200px;
+  
 }
 
-img {
-  height: 120px;
-  width: 300px;
-}

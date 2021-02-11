@@ -1,56 +1,71 @@
 'use strict';
-
-// constructor function
-function Horn (img, title, description, keyword, horns){
-  this.img_url = img;
+console.log('script is connected');
+function Horn (img,title,desc,keyword,horns) {
+  this.image_url = img;
   this.title = title;
-  this.description = description;
+  this.description = desc;
   this.keyword = keyword;
   this.horns = horns;
 }
 
-Horn.prototype.render = function(){
-  const $template = $('.photo-template').clone();
-  const $h2 = $template.find('h2');
-  $h2.text(this.title);
-  console.log('within render function, h2:',this.title);
-  const $image = $template.find('img');
-  $image.attr('src', this.img_url);
-  $image.attr('alt', this.keyword);
-  $template.find('p').text(this.description);
-
-  $template.removeClass('photo-template');
-  $template.attr('class', this.name);
-
-  $('main').append($template);
+Horn.prototype.render = function (){
+  const htmlTemplate = $('#photo-template').html();
+  const hornObject = this;
+  const renderedHornObject = Mustache.render(htmlTemplate, hornObject);
+  $('section').append(renderedHornObject);
 };
+
+const horns2 = [];
+const horns = [];
 
 $.ajax('data/page-1.json').then(callStuffBack => {
   console.log(callStuffBack);
-  const horns = [];
+
   callStuffBack.forEach( (horner) => {
     horns.push(new Horn(horner.image_url,horner.title,horner.description,horner.keyword,horner.horns));
     $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
     console.log('json horners:',horner);
   });
-  horns.forEach(horner => { horner.render();});
+
 
   $('select').change( function () {
     const choice = $('select').find(':selected').text();
     console.log(choice);
-    $('section').hide();
-    $(`#${choice}`).show();
+    $('div').hide();
+    $(`.${choice}`).show();
   });
   horns.forEach(horner => { horner.render();});
-
-
-
 });
 
+$.ajax('data/page-2.json').then(callStuffBack => {
+  console.log(callStuffBack);
+  callStuffBack.forEach( (horner) => {
+    horns2.push(new Horn(horner.image_url,horner.title,horner.description,horner.keyword,horner.horns));
+    $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
+    console.log('json horners:',horner);
+  });
 
 
+  $('select').change( function () {
+    const choice = $('select').find(':selected').text();
+    console.log(choice);
+    $('div').hide();
+    $(`.${choice}`).show();
+  });
 
-
+});
+function showPage(page) {
+  console.log(`page ${page} clicked`);
+  if (page === 1) {
+    $('section').empty();
+    horns.forEach(horner => { horner.render();});
+  }
+  if (page === 2){
+    $('section').empty();
+    horns2.forEach(horner => { horner.render();});
+  }
+}
+showPage(1);
 
 
 
